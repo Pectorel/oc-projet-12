@@ -8,18 +8,18 @@ const theme = {
     primary: "#fff",
     secondary: "#000",
     red: {
-      100: "#ff0000",
-      200: "#ff0101",
-      300: "#e60000",
+      base: "#ff0000",
+      dark: "#ff0101",
+      darker: "#e60000",
     },
     blue: {
-      100: "#4ab8ff",
+      base: "#4ab8ff",
     },
     yellow: {
-      100: "#fdcc0c",
+      base: "#fdcc0c",
     },
     pink: {
-      100: "#fd5181",
+      base: "#fd5181",
     },
   },
 };

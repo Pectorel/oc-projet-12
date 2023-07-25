@@ -8,6 +8,7 @@ const AsideMenu = styled.aside`
   gap: 2rem;
   justify-content: space-between;
   align-items: center;
+  font-weight: 500;
 `;
 
 const ActivityContainer = styled.section`

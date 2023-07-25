@@ -8,6 +8,7 @@ const Head = styled.header`
   font-size: 1.5rem;
   padding: 1rem 1.75rem;
   gap: 6%;
+  font-weight: 500;
 
   & h1 {
     line-height: 0;
