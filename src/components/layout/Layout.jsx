@@ -36,6 +36,9 @@ const HBox = styled.div`
 
   & main {
     flex: 1;
+    max-height: calc(100vh - 92px);
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 `;
 
