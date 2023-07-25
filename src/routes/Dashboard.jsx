@@ -1,7 +1,7 @@
 function Dashboard() {
   return (
     <section>
-      <h1>Hello World</h1>
+      <h2>Bonjour Thomas</h2>
     </section>
   );
 }
