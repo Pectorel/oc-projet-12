@@ -1,5 +1,5 @@
 import Header from "./Header.jsx";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Aside from "./Aside.jsx";
 import styled, { ThemeProvider } from "styled-components";
 
@@ -43,6 +43,12 @@ const HBox = styled.div`
 `;
 
 function Layout() {
+  // Redirection to default profile
+  const location = useLocation();
+  if (location.pathname === "/") {
+    return <Navigate to="/profile/12" replace />;
+  }
+
   return (
     <>
       <ThemeProvider theme={theme}>
