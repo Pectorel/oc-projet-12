@@ -10,6 +10,8 @@ import {
   YAxis,
   Text,
   ResponsiveContainer,
+  LineChart,
+  Line,
 } from "recharts";
 import StatBox from "../components/StatBox.jsx";
 
@@ -45,6 +47,7 @@ const FlexBox = styled.section`
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : "space-between"};
   flex-wrap: ${(props) => (props.wrap ? props.wrap : "wrap")};
+  gap: ${(props) => (props.gap ? props.gap : "0")};
 `;
 
 function Dashboard() {
@@ -61,7 +64,12 @@ function Dashboard() {
       </Header>
 
       <FlexBox align={"stretch"}>
-        <section style={{ flex: 1 }}>
+        <FlexBox
+          direction={"column"}
+          align={"stretch"}
+          gap={"1rem"}
+          style={{ flex: 1 }}
+        >
           <ResponsiveContainer width={"80%"} height={320}>
             <BarChart
               width={835}
@@ -72,7 +80,6 @@ function Dashboard() {
                 bottom: 5,
               }}
               barGap={10}
-              label={"Test"}
             >
               <Text x={0} y={0} scaleToFit={true} width={50}>
                 Activité quotidienne
@@ -96,7 +103,51 @@ function Dashboard() {
               />
             </BarChart>
           </ResponsiveContainer>
-        </section>
+          <FlexBox>
+            <LineChart
+              width={258}
+              height={263}
+              data={user.averageSessions["sessions"]}
+              margin={{ top: 5, bottom: 5 }}
+              style={{ background: "#ff0000", borderRadius: "5px" }}
+            >
+              <text
+                x={"15%"}
+                y={"15%"}
+                fill="black"
+                textAnchor="start"
+                dominantBaseline="central"
+              >
+                <tspan fontSize="14" fill={"rgba(255 255 255 / 50%)"}>
+                  Durée moyenne des sessions
+                </tspan>
+              </text>
+
+              <XAxis
+                dataKey="day"
+                axisLine={false}
+                tick={{ fill: "rgba(255 255 255 / 50%)" }}
+                tickLine={false}
+                type={"category"}
+                interval={"preserveStartEnd"}
+                style={{ fontWeight: 500 }}
+              />
+              <YAxis padding={{ top: 100 }} hide={true} />
+              <Tooltip
+                labelStyle={{ display: "none" }}
+                contentStyle={{ color: "red !important" }}
+                wrapperStyle={{ color: "red" }}
+              />
+              <Line
+                type="monotone"
+                dataKey="sessionLength"
+                stroke="rgba(255 255 255 / 50%)"
+                strokeWidth={3}
+                dot={false}
+              />
+            </LineChart>
+          </FlexBox>
+        </FlexBox>
 
         <FlexBox direction={"column"}>
           <StatBox

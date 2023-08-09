@@ -21,7 +21,20 @@ const router = createBrowserRouter([
               `http://localhost:3000/user/${params.profileId}/activity`,
             );
 
+            const averageSessions = await axios.get(
+              `http://localhost:3000/user/${params.profileId}/average-sessions`,
+            );
+
+            const sportSessions = averageSessions.data.data["sessions"];
+
+            const days = ["L", "M", "M", "J", "V", "S", "D"];
+
+            for (const session in sportSessions) {
+              sportSessions[session]["day"] = days[session];
+            }
+
             res.data.data.activity = activities.data.data;
+            res.data.data.averageSessions = averageSessions.data.data;
 
             return res.data.data;
           } catch (err) {
