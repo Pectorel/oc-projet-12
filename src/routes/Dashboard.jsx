@@ -12,6 +12,13 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
+  RadialBarChart,
+  RadialBar,
 } from "recharts";
 import StatBox from "../components/StatBox.jsx";
 
@@ -103,7 +110,7 @@ function Dashboard() {
               />
             </BarChart>
           </ResponsiveContainer>
-          <FlexBox>
+          <FlexBox justifyContent={"start"} gap={"1.875rem"}>
             <LineChart
               width={258}
               height={263}
@@ -146,6 +153,66 @@ function Dashboard() {
                 dot={false}
               />
             </LineChart>
+
+            <RadarChart
+              outerRadius={90}
+              width={258}
+              height={263}
+              data={user.performances}
+              style={{
+                background: "#282D30",
+                borderRadius: "5px",
+                fontSize: ".875rem",
+                textTransform: "capitalize",
+              }}
+            >
+              <PolarGrid radialLines={false} />
+              <PolarAngleAxis dataKey="subject" />
+              <PolarRadiusAxis
+                angle={30}
+                domain={[0, 250]}
+                axisLine={false}
+                tick={false}
+              />
+              <Radar
+                name="performances"
+                dataKey="A"
+                fill="#ff0101"
+                fillOpacity={0.7}
+              />
+            </RadarChart>
+
+            <RadialBarChart
+              width={258}
+              height={263}
+              cx="50%"
+              cy="50%"
+              innerRadius="80%"
+              outerRadius="100%"
+              barSize={10}
+              data={user.objectives}
+              startAngle={90}
+              endAngle={450}
+            >
+              <RadialBar
+                label={false}
+                background={false}
+                clockWise
+                dataKey="percent"
+              />
+
+              <text
+                x={"50%"}
+                y={"50%"}
+                fill="black"
+                textAnchor="middle"
+                dominantBaseline="central"
+              >
+                <tspan fontSize="14" fill={"#000"}>
+                  {user.objectives[1].percent}% de votre objectif
+                </tspan>
+              </text>
+            </RadialBarChart>
           </FlexBox>
         </FlexBox>
 

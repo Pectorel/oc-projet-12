@@ -36,8 +36,41 @@ const router = createBrowserRouter([
             res.data.data.activity = activities.data.data;
             res.data.data.averageSessions = averageSessions.data.data;
 
+            const performances = await axios.get(
+              `http://localhost:3000/user/${params.profileId}/performance`,
+            );
+
+            let perfs = [];
+
+            for (const perf in performances.data.data.data) {
+              const currentPerf = performances.data.data.data[perf];
+
+              const perfObject = {
+                subject: performances.data.data.kind[currentPerf.kind],
+                A: currentPerf.value,
+              };
+
+              perfs.push(perfObject);
+            }
+
+            res.data.data.performances = perfs;
+
+            res.data.data.objectives = [
+              {
+                name: "limit",
+                percent: 100,
+                fill: "transparent",
+              },
+              {
+                name: "objective",
+                percent: 33,
+                fill: "#ff0000",
+              },
+            ];
+
             return res.data.data;
           } catch (err) {
+            console.dir(err);
             throw json(
               {
                 errMessage: "Le profile est introuvable",

@@ -7,6 +7,17 @@
     font-size: 1rem;
     line-height: 1;
     font-weight: 400;
+
+    /* Variables */
+    --color-bg-primary: #fff;
+    --color-bg-secondary: #000;
+    --color-red-100: #f00;
+    --color-red-200: #ff0101;
+    --color-red-300: #e60000;
+    --color-blue-100: #4ab8ff;
+    --color-yellow-100: #fdcc0c;
+    --color-pink-100: #fd5181;
+
 }
 
 /* Reset */

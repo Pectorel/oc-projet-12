@@ -1,0 +1,36 @@
+#page-header{
+    display: flex;
+    justify-content: space-between;
+    gap: 6%;
+    padding: 1rem 1.75rem;
+    background-color: var(--color-bg-secondary);
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    & h1 {
+        line-height: 0;
+
+        & a {
+            display: block;
+        }
+    }
+
+}
+
+#logo{
+    height: 60px;
+}
+
+#header-nav{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4rem;
+    align-items: center;
+
+    & a {
+        color: var(--color-bg-primary);
+        text-decoration: none;
+    }
+}
+
