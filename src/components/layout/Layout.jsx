@@ -1,7 +1,8 @@
 import Header from "./Header.jsx";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Aside from "./Aside.jsx";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
+import styles from "../../assets/style/components/layout.module.css";
 
 const theme = {
   colors: {
@@ -24,24 +25,6 @@ const theme = {
   },
 };
 
-const HBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-
-  & aside {
-    flex-shrink: 1;
-    height: calc(100vh - 92px);
-  }
-
-  & main {
-    flex: 1;
-    max-height: calc(100vh - 92px);
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-`;
-
 function Layout() {
   // Redirection to default profile
   const location = useLocation();
@@ -53,12 +36,12 @@ function Layout() {
     <>
       <ThemeProvider theme={theme}>
         <Header />
-        <HBox>
+        <div id={styles["layout"]}>
           <Aside />
           <main>
             <Outlet />
           </main>
-        </HBox>
+        </div>
       </ThemeProvider>
     </>
   );
