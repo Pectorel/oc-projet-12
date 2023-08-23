@@ -33,6 +33,7 @@ html, body{
     margin: 0;
     box-sizing: border-box;
     font-weight: inherit;
+    text-decoration: none;
 }
 
 /* Layout */
