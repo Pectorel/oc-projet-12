@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styles from "../assets/style/dashboard.module.css";
 import { useLoaderData } from "react-router-dom";
 import {
   Bar,
@@ -22,61 +22,21 @@ import {
 } from "recharts";
 import StatBox from "../components/StatBox.jsx";
 
-const Header = styled.header`
-  margin-bottom: 4.875rem;
-`;
-
-const Dash = styled.section`
-  width: 84%;
-  margin: 4rem auto;
-
-  & > header {
-    & h2 {
-      font-size: 3rem;
-      font-weight: 500;
-      margin-bottom: 2rem;
-
-      & span {
-        color: ${(props) => props.theme.colors.red.base};
-      }
-    }
-
-    & p {
-      font-size: 1.125rem;
-    }
-  }
-`;
-
-const FlexBox = styled.section`
-  display: flex;
-  flex-direction: ${(props) => (props.direction ? props.direction : "row")};
-  align-items: ${(props) => (props.align ? props.align : "center")};
-  justify-content: ${(props) =>
-    props.justifyContent ? props.justifyContent : "space-between"};
-  flex-wrap: ${(props) => (props.wrap ? props.wrap : "wrap")};
-  gap: ${(props) => (props.gap ? props.gap : "0")};
-`;
-
 function Dashboard() {
   const user = useLoaderData();
   console.log(user);
 
   return (
-    <Dash>
-      <Header>
+    <section id={styles["dash"]}>
+      <header>
         <h2>
           Bonjour <span>{user["userInfos"]["firstName"]}</span>
         </h2>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      </Header>
+      </header>
 
-      <FlexBox align={"stretch"}>
-        <FlexBox
-          direction={"column"}
-          align={"stretch"}
-          gap={"1rem"}
-          style={{ flex: 1 }}
-        >
+      <section className={`d-flex align-i-stretch`}>
+        <div className={`d-flex flex-col align-i-stretch gap-1 flex-1`}>
           <ResponsiveContainer width={"80%"} height={320}>
             <BarChart
               width={835}
@@ -110,7 +70,7 @@ function Dashboard() {
               />
             </BarChart>
           </ResponsiveContainer>
-          <FlexBox justifyContent={"start"} gap={"1.875rem"}>
+          <div className={`d-flex justify-c-start gap-1-875`}>
             <LineChart
               width={258}
               height={263}
@@ -213,10 +173,10 @@ function Dashboard() {
                 </tspan>
               </text>
             </RadialBarChart>
-          </FlexBox>
-        </FlexBox>
+          </div>
+        </div>
 
-        <FlexBox direction={"column"}>
+        <div className={`d-flex flex-col justify-c-space-b`}>
           <StatBox
             iconcolor={"rgba(255 0 0 / 6.61%)"}
             stat={`${user["keyData"]["calorieCount"]}kCal`}
@@ -237,9 +197,9 @@ function Dashboard() {
             stat={`${user["keyData"]["lipidCount"]}g`}
             unit={"Lipides"}
           />
-        </FlexBox>
-      </FlexBox>
-    </Dash>
+        </div>
+      </section>
+    </section>
   );
 }
 

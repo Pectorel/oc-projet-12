@@ -34,3 +34,60 @@ html, body{
     box-sizing: border-box;
     font-weight: inherit;
 }
+
+/* Layout */
+
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.align-i-center{
+    align-items: center;
+}
+
+.align-i-start{
+    align-items: start;
+}
+
+.align-i-stretch{
+    align-items: stretch;
+}
+
+.justify-c-center{
+    justify-content: center;
+}
+
+.justify-c-start{
+    justify-content: start;
+}
+
+.justify-c-space-b{
+    justify-content: space-between;
+}
+
+.gap-05{
+    gap: .5rem;
+}
+
+.gap-1{
+    gap: 1rem;
+}
+
+.gap-1-875{
+    gap: 1.875rem;
+}
+
+.gap-2{
+    gap: 2rem;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+
