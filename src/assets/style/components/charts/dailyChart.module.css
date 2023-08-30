@@ -10,3 +10,14 @@
     font-weight: 500;
     fill: #20253A;
 }
+
+.tooltip{
+    background: var(--color-red-300);
+    color: #fff;
+    text-align: center;
+
+    & span{
+        display: block;
+        padding: 1.25rem .75rem;
+    }
+}

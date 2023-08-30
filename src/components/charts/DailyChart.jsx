@@ -43,9 +43,17 @@ function DailyChart({ activity }) {
           </svg>
 
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
-          <XAxis dataKey="day" />
-          <YAxis orientation={"right"} />
-          <Tooltip cursor={{ fill: "rgba(196 196 196 / 50%)" }} />
+          <XAxis dataKey="day" tickLine={false} tickSize={16} />
+          <YAxis
+            orientation={"right"}
+            axisLine={false}
+            tickLine={false}
+            tickSize={20}
+          />
+          <Tooltip
+            cursor={{ fill: "rgba(196 196 196 / 50%)" }}
+            content={<CustomTooltip />}
+          />
           <Legend
             align={"right"}
             verticalAlign={"top"}
@@ -71,6 +79,20 @@ function DailyChart({ activity }) {
       </ResponsiveContainer>
     </div>
   );
+}
+
+// eslint-disable-next-line react/prop-types
+function CustomTooltip({ payload, label, active }) {
+  if (active) {
+    return (
+      <div className={styles.tooltip}>
+        <span>{payload[0].value}kg</span>
+        <span>{payload[1].value}kcal</span>
+      </div>
+    );
+  }
+
+  return null;
 }
 
 export default DailyChart;
