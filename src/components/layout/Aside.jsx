@@ -1,4 +1,4 @@
-import styles from "../../assets/style/components/aside.module.css";
+import styles from "../../assets/style/components/layout/aside.module.css";
 
 function Aside() {
   return (

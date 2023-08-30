@@ -1,15 +1,9 @@
 import styles from "../assets/style/dashboard.module.css";
 import { useLoaderData } from "react-router-dom";
 import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
   Tooltip,
   XAxis,
   YAxis,
-  Text,
-  ResponsiveContainer,
   LineChart,
   Line,
   RadarChart,
@@ -21,6 +15,7 @@ import {
   RadialBar,
 } from "recharts";
 import StatBox from "../components/StatBox.jsx";
+import DailyChart from "../components/charts/DailyChart.jsx";
 
 function Dashboard() {
   const user = useLoaderData();
@@ -35,41 +30,10 @@ function Dashboard() {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
 
-      <section className={`d-flex align-i-stretch`}>
-        <div className={`d-flex flex-col align-i-stretch gap-1 flex-1`}>
-          <ResponsiveContainer width={"80%"} height={320}>
-            <BarChart
-              width={835}
-              height={320}
-              data={user.activity["sessions"]}
-              margin={{
-                top: 5,
-                bottom: 5,
-              }}
-              barGap={10}
-            >
-              <Text x={0} y={0} scaleToFit={true} width={50}>
-                Activité quotidienne
-              </Text>
-              <CartesianGrid vertical={false} strokeDasharray="3 3" />
-              <XAxis dataKey="day" />
-              <YAxis orientation={"right"} />
-              <Tooltip cursor={{ fill: "rgba(196 196 196 / 50%)" }} />
-              <Legend />
-              <Bar
-                dataKey="kilogram"
-                fill="#282d30"
-                barSize={8}
-                radius={[10, 10, 0, 0]}
-              />
-              <Bar
-                dataKey="calories"
-                fill="#e60000"
-                barSize={8}
-                radius={[10, 10, 0, 0]}
-              />
-            </BarChart>
-          </ResponsiveContainer>
+      <section className={`d-flex align-i-stretch gap-2`}>
+        <div className={`d-flex flex-col align-i-stretch gap-2 flex-1`}>
+          <DailyChart activity={user.activity} />
+
           <div className={`d-flex justify-c-start gap-1-875`}>
             <LineChart
               width={258}
@@ -181,21 +145,25 @@ function Dashboard() {
             iconcolor={"rgba(255 0 0 / 6.61%)"}
             stat={`${user["keyData"]["calorieCount"]}kCal`}
             unit={"Calories"}
+            icon={{ src: "/activity-logos/calories.svg", alt: "calories" }}
           />
           <StatBox
             iconcolor={"rgba(74 184 255 / 10%)"}
             stat={`${user["keyData"]["proteinCount"]}g`}
             unit={"Proteines"}
+            icon={{ src: "/activity-logos/proteines.svg", alt: "protéines" }}
           />
           <StatBox
             iconcolor={"rgba(249 206 35 / 10%)"}
             stat={`${user["keyData"]["carbohydrateCount"]}g`}
             unit={"Glucides"}
+            icon={{ src: "/activity-logos/glucides.svg", alt: "glucides" }}
           />
           <StatBox
             iconcolor={"rgba(253 81 129 / 10%)"}
             stat={`${user["keyData"]["lipidCount"]}g`}
             unit={"Lipides"}
+            icon={{ src: "/activity-logos/lipides.svg", alt: "lipides" }}
           />
         </div>
       </section>

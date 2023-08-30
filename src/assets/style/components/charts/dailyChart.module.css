@@ -1,0 +1,12 @@
+.container{
+    background: var(--color-grey-100);
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 60vw;
+}
+
+.title{
+    font-weight: 500;
+    fill: #20253A;
+}

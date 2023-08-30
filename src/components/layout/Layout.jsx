@@ -1,7 +1,7 @@
 import Header from "./Header.jsx";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Aside from "./Aside.jsx";
-import styles from "../../assets/style/components/layout.module.css";
+import styles from "../../assets/style/components/layout/layout.module.css";
 
 function Layout() {
   // Redirection to default profile
