@@ -3,6 +3,7 @@ import Layout from "./components/layout/Layout.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import Dashboard from "./routes/Dashboard.jsx";
 import axios from "axios";
+import Home from "./routes/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
         },
         path: "/profile/:profileId",
         element: <Dashboard />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
     ],
   },

@@ -1,0 +1,17 @@
+#home{
+    padding: 4rem 6rem;
+
+    .title{
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+
+    & a{
+        color: var(--color-red-100);
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+}
+

@@ -10,7 +10,7 @@ function Header() {
         </Link>
       </h1>
       <nav id={styles["header-nav"]}>
-        <Link to={"/"}>Accueil</Link>
+        <Link to={"/home"}>Accueil</Link>
         <Link to={"/"}>Profil</Link>
         <Link to={"/"}>Réglage</Link>
         <Link to={"/"}>Communauté</Link>
