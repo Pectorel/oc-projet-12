@@ -82,7 +82,7 @@ function DailyChart({ activity }) {
 }
 
 // eslint-disable-next-line react/prop-types
-function CustomTooltip({ payload, label, active }) {
+function CustomTooltip({ payload, active }) {
   if (active) {
     return (
       <div className={styles.tooltip}>

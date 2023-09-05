@@ -63,7 +63,7 @@ const router = createBrowserRouter([
               },
               {
                 name: "objective",
-                percent: 33,
+                percent: res.data.data["todayScore"] * 100,
                 fill: "#ff0000",
               },
             ];

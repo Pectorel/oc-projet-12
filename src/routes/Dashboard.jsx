@@ -1,21 +1,10 @@
-import styles from "../assets/style/dashboard.module.css";
 import { useLoaderData } from "react-router-dom";
-import {
-  Tooltip,
-  XAxis,
-  YAxis,
-  LineChart,
-  Line,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  RadialBarChart,
-  RadialBar,
-} from "recharts";
+import styles from "../assets/style/dashboard.module.css";
 import StatBox from "../components/StatBox.jsx";
 import DailyChart from "../components/charts/DailyChart.jsx";
+import SessionChart from "../components/charts/SessionChart.jsx";
+import PerformanceChart from "../components/charts/PerformanceChart.jsx";
+import ScoreChart from "../components/charts/ScoreChart.jsx";
 
 function Dashboard() {
   const user = useLoaderData();
@@ -35,108 +24,15 @@ function Dashboard() {
           <DailyChart activity={user.activity} />
 
           <div className={`d-flex justify-c-start gap-1-875`}>
-            <LineChart
-              width={258}
-              height={263}
-              data={user.averageSessions["sessions"]}
-              margin={{ top: 5, bottom: 5 }}
-              style={{ background: "#ff0000", borderRadius: "5px" }}
-            >
-              <text
-                x={"15%"}
-                y={"15%"}
-                fill="black"
-                textAnchor="start"
-                dominantBaseline="central"
-              >
-                <tspan fontSize="14" fill={"rgba(255 255 255 / 50%)"}>
-                  Durée moyenne des sessions
-                </tspan>
-              </text>
+            {/*
+              Session Chart
+              Stats Chart
+              Today score Chart
+            */}
 
-              <XAxis
-                dataKey="day"
-                axisLine={false}
-                tick={{ fill: "rgba(255 255 255 / 50%)" }}
-                tickLine={false}
-                type={"category"}
-                interval={"preserveStartEnd"}
-                style={{ fontWeight: 500 }}
-              />
-              <YAxis padding={{ top: 100 }} hide={true} />
-              <Tooltip
-                labelStyle={{ display: "none" }}
-                contentStyle={{ color: "red !important" }}
-                wrapperStyle={{ color: "red" }}
-              />
-              <Line
-                type="monotone"
-                dataKey="sessionLength"
-                stroke="rgba(255 255 255 / 50%)"
-                strokeWidth={3}
-                dot={false}
-              />
-            </LineChart>
-
-            <RadarChart
-              outerRadius={90}
-              width={258}
-              height={263}
-              data={user.performances}
-              style={{
-                background: "#282D30",
-                borderRadius: "5px",
-                fontSize: ".875rem",
-                textTransform: "capitalize",
-              }}
-            >
-              <PolarGrid radialLines={false} />
-              <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis
-                angle={30}
-                domain={[0, 250]}
-                axisLine={false}
-                tick={false}
-              />
-              <Radar
-                name="performances"
-                dataKey="A"
-                fill="#ff0101"
-                fillOpacity={0.7}
-              />
-            </RadarChart>
-
-            <RadialBarChart
-              width={258}
-              height={263}
-              cx="50%"
-              cy="50%"
-              innerRadius="80%"
-              outerRadius="100%"
-              barSize={10}
-              data={user.objectives}
-              startAngle={90}
-              endAngle={450}
-            >
-              <RadialBar
-                label={false}
-                background={false}
-                clockWise
-                dataKey="percent"
-              />
-
-              <text
-                x={"50%"}
-                y={"50%"}
-                fill="black"
-                textAnchor="middle"
-                dominantBaseline="central"
-              >
-                <tspan fontSize="14" fill={"#000"}>
-                  {user.objectives[1].percent}% de votre objectif
-                </tspan>
-              </text>
-            </RadialBarChart>
+            <SessionChart sessions={user.averageSessions} />
+            <PerformanceChart perfs={user.performances} />
+            <ScoreChart objectives={user.objectives} />
           </div>
         </div>
 
