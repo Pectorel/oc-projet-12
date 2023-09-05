@@ -23,13 +23,7 @@ function Dashboard() {
         <div className={`d-flex flex-col align-i-stretch gap-2 flex-1`}>
           <DailyChart activity={user.activity} />
 
-          <div className={`d-flex justify-c-start gap-1-875`}>
-            {/*
-              Session Chart
-              Stats Chart
-              Today score Chart
-            */}
-
+          <div className={`d-flex justify-c-space-b`}>
             <SessionChart sessions={user.averageSessions} />
             <PerformanceChart perfs={user.performances} />
             <ScoreChart objectives={user.objectives} />
