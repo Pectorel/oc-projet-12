@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 function Home() {
   /* TODO: Create with dynamic data if possible */
   return (
-    <section
-      id={styles["home"]}
-      className={`d-flex flex-col gap-2 ${styles.home}`}
-    >
+    <section id={styles["home"]} className={`d-flex flex-col gap-2`}>
       <h1 className={styles.title}>Liste des profils</h1>
       <Link to="/profile/12">Karl</Link>
       <Link to="/profile/18">Cecilia</Link>
