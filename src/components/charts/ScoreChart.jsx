@@ -1,5 +1,6 @@
-import { RadialBar, RadialBarChart } from "recharts";
+import { RadialBar, RadialBarChart, Text } from "recharts";
 import PropTypes from "prop-types";
+import styles from "../../assets/style/components/charts/scoreChart.module.css";
 
 ScoreChart.propTypes = {
   objectives: PropTypes.array,
@@ -7,32 +8,50 @@ ScoreChart.propTypes = {
 
 function ScoreChart({ objectives }) {
   return (
-    <RadialBarChart
-      width={258}
-      height={263}
-      cx="50%"
-      cy="50%"
-      innerRadius="80%"
-      outerRadius="100%"
-      barSize={10}
-      data={objectives}
-      startAngle={90}
-      endAngle={450}
-    >
-      <RadialBar label={false} background={false} clockWise dataKey="percent" />
-
-      <text
-        x={"50%"}
-        y={"50%"}
-        fill="black"
-        textAnchor="middle"
-        dominantBaseline="central"
+    <div className={styles.container}>
+      <div className={styles.circle}>
+        <div className={styles.content}>
+          <span className={styles.percent}>{objectives[1].percent}%</span>
+          <span className={styles.text}>de votre objectif</span>
+        </div>
+      </div>
+      <RadialBarChart
+        width={258}
+        height={263}
+        cx="50%"
+        cy="50%"
+        innerRadius="60%"
+        outerRadius="80%"
+        barSize={10}
+        data={objectives}
+        startAngle={90}
+        endAngle={450}
+        style={{
+          background: "transparent",
+          position: "relative",
+          zIndex: "12",
+        }}
       >
-        <tspan fontSize="14" fill={"#000"}>
-          {objectives[1].percent}% de votre objectif
-        </tspan>
-      </text>
-    </RadialBarChart>
+        <svg>
+          <Text
+            className={styles.title}
+            x={30}
+            y={24}
+            textAnchor={"start"}
+            verticalAnchor={"start"}
+          >
+            Score
+          </Text>
+        </svg>
+        <RadialBar
+          label={false}
+          background={false}
+          clockWise
+          dataKey="percent"
+          cornerRadius={30}
+        />
+      </RadialBarChart>
+    </div>
   );
 }
 
