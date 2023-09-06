@@ -2,7 +2,7 @@ import { RadialBar, RadialBarChart } from "recharts";
 import PropTypes from "prop-types";
 
 ScoreChart.propTypes = {
-  objectives: PropTypes.object,
+  objectives: PropTypes.array,
 };
 
 function ScoreChart({ objectives }) {

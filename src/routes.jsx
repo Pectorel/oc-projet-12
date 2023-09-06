@@ -4,6 +4,7 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import Dashboard from "./routes/Dashboard.jsx";
 import axios from "axios";
 import Home from "./routes/Home.jsx";
+import { getAll } from "./utilities/loaderUtilities.js";
 
 const router = createBrowserRouter([
   {
@@ -14,67 +15,12 @@ const router = createBrowserRouter([
       {
         loader: async ({ params }) => {
           try {
-            const res = await axios.get(
-              `http://localhost:3000/user/${params.profileId}`,
-            );
-
-            const activities = await axios.get(
-              `http://localhost:3000/user/${params.profileId}/activity`,
-            );
-
-            const averageSessions = await axios.get(
-              `http://localhost:3000/user/${params.profileId}/average-sessions`,
-            );
-
-            const sportSessions = averageSessions.data.data["sessions"];
-
-            const days = ["L", "M", "M", "J", "V", "S", "D"];
-
-            for (const session in sportSessions) {
-              sportSessions[session]["day"] = days[session];
-            }
-
-            res.data.data.activity = activities.data.data;
-            res.data.data.averageSessions = averageSessions.data.data;
-
-            const performances = await axios.get(
-              `http://localhost:3000/user/${params.profileId}/performance`,
-            );
-
-            let perfs = [];
-
-            for (const perf in performances.data.data.data) {
-              const currentPerf = performances.data.data.data[perf];
-
-              const perfObject = {
-                subject: performances.data.data.kind[currentPerf.kind],
-                A: currentPerf.value,
-              };
-
-              perfs.push(perfObject);
-            }
-
-            res.data.data.performances = perfs;
-
-            res.data.data.objectives = [
-              {
-                name: "limit",
-                percent: 100,
-                fill: "transparent",
-              },
-              {
-                name: "objective",
-                percent: res.data.data["todayScore"] * 100,
-                fill: "#ff0000",
-              },
-            ];
-
-            return res.data.data;
+            return await getAll(params.profileId);
           } catch (err) {
-            console.dir(err);
+            //console.dir(err);
             throw json(
               {
-                errMessage: "Le profile est introuvable",
+                errMessage: "Le profil est introuvable",
               },
               { status: 404 },
             );

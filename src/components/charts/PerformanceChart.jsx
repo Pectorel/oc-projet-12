@@ -17,7 +17,7 @@ function PerformanceChart({ perfs }) {
       outerRadius={90}
       width={258}
       height={263}
-      data={perfs}
+      data={perfs.data}
       style={{
         background: "#282D30",
         borderRadius: "5px",
