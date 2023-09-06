@@ -2,7 +2,6 @@ import { createBrowserRouter, json } from "react-router-dom";
 import Layout from "./components/layout/Layout.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import Dashboard from "./routes/Dashboard.jsx";
-import axios from "axios";
 import Home from "./routes/Home.jsx";
 import { getAll } from "./utilities/loaderUtilities.js";
 

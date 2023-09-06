@@ -62,6 +62,8 @@ function DailyChart({ activity }) {
               top: 0,
               marginBottom: "50px",
             }}
+            formatter={customLegendRender}
+            iconSize={10}
           />
           <Bar
             dataKey="kilogram"
@@ -93,6 +95,16 @@ function CustomTooltip({ payload, active }) {
   }
 
   return null;
+}
+
+function customLegendRender(value) {
+  // We check for last legend span for positioning purpose
+  const last = value === "calories" ? styles["last"] : "";
+  return (
+    <span className={`${styles["legend-text"]} ${last}`}>
+      {value === "kilogram" ? "Poids (kg)" : "Calories brûlées (kCal)"}
+    </span>
+  );
 }
 
 export default DailyChart;

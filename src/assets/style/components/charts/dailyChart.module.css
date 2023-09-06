@@ -11,6 +11,19 @@
     fill: #20253A;
 }
 
+.legend-text{
+    display: inline-block;
+    position: relative;
+    margin-left: .625rem;
+    top: 2px;
+    color: var(--color-grey-200);
+
+    &:not(.last){
+        margin-right: 2rem;
+    }
+
+}
+
 .tooltip{
     background: var(--color-red-300);
     color: #fff;
