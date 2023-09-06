@@ -43,7 +43,7 @@ export async function getPerformances(id) {
     perfs.push(perfObject);
   }
 
-  performances.data = perfs;
+  performances.data = perfs.reverse();
 
   return performances;
 }

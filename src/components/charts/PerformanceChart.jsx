@@ -4,6 +4,7 @@ import {
   PolarRadiusAxis,
   Radar,
   RadarChart,
+  Tooltip,
 } from "recharts";
 import PropTypes from "prop-types";
 
@@ -14,25 +15,26 @@ PerformanceChart.propTypes = {
 function PerformanceChart({ perfs }) {
   return (
     <RadarChart
-      outerRadius={90}
+      outerRadius={80}
       width={258}
       height={263}
       data={perfs.data}
       style={{
         background: "#282D30",
         borderRadius: "5px",
-        fontSize: ".875rem",
+        fontSize: ".75rem",
         textTransform: "capitalize",
       }}
     >
       <PolarGrid radialLines={false} />
-      <PolarAngleAxis dataKey="subject" />
+      <PolarAngleAxis dataKey="subject" tick={{ fill: "#FFF" }} tickSize={10} />
       <PolarRadiusAxis
         angle={30}
         domain={[0, 250]}
         axisLine={false}
         tick={false}
       />
+      <Tooltip />
       <Radar name="performances" dataKey="A" fill="#ff0101" fillOpacity={0.7} />
     </RadarChart>
   );
