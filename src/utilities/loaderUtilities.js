@@ -2,6 +2,14 @@ import axios from "axios";
 
 export async function getProfile(id) {
   const res = await axios.get(`http://localhost:3000/user/${id}`);
+
+  const profile = res.data.data;
+
+  if (!Object.prototype.hasOwnProperty.call(profile, "todayScore")) {
+    profile.todayScore = profile.score;
+    delete profile.score;
+  }
+
   return res.data.data;
 }
 
