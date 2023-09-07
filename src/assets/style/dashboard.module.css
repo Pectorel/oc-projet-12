@@ -27,7 +27,7 @@
 
 /* Responsive */
 
-@media screen and (width < 87.25rem) {
+@media screen and (width < 90.315rem) {
     #page-content{
         flex-direction: column;
 
@@ -40,7 +40,6 @@
     #stat-container{
         flex-direction: row;
         gap: 2rem;
-        justify-content: start;
 
         > *{
             flex: 1 1 0;
