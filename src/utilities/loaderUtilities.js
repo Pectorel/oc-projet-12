@@ -1,5 +1,11 @@
 import axios from "axios";
 
+/**
+ *
+ * Data retreiving with Mock Data
+ *
+ */
+
 export async function getProfile(id) {
   const res = await axios.get(`http://localhost:3000/user/${id}`);
 
