@@ -27,7 +27,7 @@
 
 /* Responsive */
 
-@media screen and (width < 90.315rem) {
+@media screen and (width < 91.375rem) {
     #page-content{
         flex-direction: column;
 
