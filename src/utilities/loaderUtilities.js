@@ -1,49 +1,62 @@
-import axios from "axios";
-
 /**
  *
  * Data retreiving with Mock Data
  *
  */
+import axios from "axios";
+
+function getById(data, id, idLabel = "userId") {
+  let res = null;
+  if (Array.isArray(data)) {
+    for (const row of data) {
+      if (!Object.prototype.hasOwnProperty.call(row, idLabel)) break;
+
+      if (row[idLabel] == id) {
+        res = row;
+        break;
+      }
+    }
+  }
+
+  return res;
+}
 
 export async function getProfile(id) {
-  const res = await axios.get(`http://localhost:3000/user/${id}`);
+  const res = await axios.get(`/mock/profile.json`);
 
-  const profile = res.data.data;
+  const profile = getById(res.data, id, "id");
 
   if (!Object.prototype.hasOwnProperty.call(profile, "todayScore")) {
     profile.todayScore = profile.score;
     delete profile.score;
   }
 
-  return res.data.data;
+  return profile;
 }
 
 export async function getActivity(id) {
-  const res = await axios.get(`http://localhost:3000/user/${id}/activity`);
-  return res.data.data;
+  const res = await axios.get(`/mock/activity.json`);
+  return getById(res.data, id);
 }
 
 export async function getSessions(id) {
-  const res = await axios.get(
-    `http://localhost:3000/user/${id}/average-sessions`,
-  );
+  const res = await axios.get(`/mock/average-session.json`);
 
-  const averageSessions = res.data.data;
+  const sessions = getById(res.data, id);
 
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 
-  for (const session in averageSessions["sessions"]) {
-    averageSessions["sessions"][session]["day"] = days[session];
+  for (const session in sessions["sessions"]) {
+    sessions["sessions"][session]["day"] = days[session];
   }
 
-  return averageSessions;
+  return sessions;
 }
 
 export async function getPerformances(id) {
-  const res = await axios.get(`http://localhost:3000/user/${id}/performance`);
+  const res = await axios.get(`/mock/performance.json`);
 
-  const performances = res.data.data;
+  const performances = getById(res.data, id);
   let perfs = [];
 
   for (const perf in performances.data) {
