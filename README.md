@@ -1,3 +1,6 @@
+# This uses mock data and not the API!!!
+## For API usage check the main branch
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
