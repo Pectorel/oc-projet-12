@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router-dom";
-import styles from "../assets/style/dashboard.module.css";
 import StatBox from "../components/StatBox.jsx";
 import DailyChart from "../components/charts/DailyChart.jsx";
 import SessionChart from "../components/charts/SessionChart.jsx";
 import PerformanceChart from "../components/charts/PerformanceChart.jsx";
 import ScoreChart from "../components/charts/ScoreChart.jsx";
+import styles from "../assets/style/dashboard.module.css";
 
 function Dashboard() {
   const user = useLoaderData();
@@ -19,18 +19,27 @@ function Dashboard() {
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </header>
 
-      <section className={`d-flex align-i-stretch gap-2`}>
-        <div className={`d-flex flex-col align-i-stretch gap-2 flex-1`}>
+      <section
+        id={styles["page-content"]}
+        className={`d-flex align-i-stretch gap-2`}
+      >
+        <div
+          id={styles["graph-container"]}
+          className={`d-flex flex-col align-i-stretch gap-2 flex-1`}
+        >
           <DailyChart activity={user.activity} />
 
-          <div className={`d-flex justify-c-space-b`}>
+          <div className={`d-flex justify-c-space-b gap-1-875`}>
             <SessionChart sessions={user.averageSessions} />
             <PerformanceChart perfs={user.performances} />
             <ScoreChart objectives={user.objectives} />
           </div>
         </div>
 
-        <div className={`d-flex flex-col justify-c-space-b`}>
+        <div
+          id={styles["stat-container"]}
+          className={`d-flex flex-col justify-c-space-b`}
+        >
           <StatBox
             iconcolor={"rgba(255 0 0 / 6.61%)"}
             stat={`${user.profile["keyData"]["calorieCount"]}kCal`}

@@ -2,7 +2,6 @@ import styles from "../assets/style/home.module.css";
 import { Link } from "react-router-dom";
 
 function Home() {
-  /* TODO: Create with dynamic data if possible */
   return (
     <section id={styles["home"]} className={`d-flex flex-col gap-2`}>
       <h1 className={styles.title}>Liste des profils</h1>

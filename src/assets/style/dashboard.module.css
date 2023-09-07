@@ -20,3 +20,52 @@
         }
     }
 }
+
+#graph-container{
+    width: 70%;
+}
+
+/* Responsive */
+
+@media screen and (width < 87.25rem) {
+    #page-content{
+        flex-direction: column;
+
+    }
+
+    #graph-container{
+        width: 100%;
+    }
+
+    #stat-container{
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: start;
+
+        > *{
+            flex: 1 1 0;
+            padding: 0;
+        }
+
+    }
+
+}
+
+@media screen and (width < 72rem){
+    #dash{
+        width: 95%;
+    }
+}
+
+@media screen and (width < 51.875rem){
+    #stat-container{
+        > *{
+            &:last-child{
+                max-width: 30%;
+            }
+
+        }
+
+    }
+
+}
