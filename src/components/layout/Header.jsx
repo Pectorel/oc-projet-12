@@ -11,9 +11,9 @@ function Header() {
       </h1>
       <nav id={styles["header-nav"]}>
         <Link to={"/home"}>Accueil</Link>
-        <Link to={"/"}>Profil</Link>
-        <Link to={"/"}>Réglage</Link>
-        <Link to={"/"}>Communauté</Link>
+        <Link to={"#"}>Profil</Link>
+        <Link to={"#"}>Réglage</Link>
+        <Link to={"#"}>Communauté</Link>
       </nav>
     </header>
   );
